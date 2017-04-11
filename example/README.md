@@ -20,6 +20,12 @@ Here is the list of the sequence executed by the script:
 
 ## How to run this example
 
+### Important notice
+
+This sample file uses a database called `test_database` as a demonstration.
+If such a database already exists on your SQL server, you may want the script to use a different one.
+Simply change the database name in the first lines of the sample file.
+
 ### System requirements
 
 To make this example work, you will need:

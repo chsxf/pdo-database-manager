@@ -11,6 +11,6 @@ To make this example work, you will need:
 ### Executing from the command-line
 
 * Make sure the `php` executable is in your path
-* Type the following command into your command-line interface
-	```php -f /path/to/example.php```
+* Type the following command into your command-line interface `php -f /path/to/example.php`
 
+### Executing through a web server

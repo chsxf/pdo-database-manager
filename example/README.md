@@ -29,7 +29,7 @@ Simply change the database name in the first lines of the sample file.
 ### System requirements
 
 To make this example work, you will need:
-* a SQL server with a database called `test_database` (preferably MySQL)
+* a MySQL 5+ server with a database called `test_database`
 * PHP 5.1 or later version (through a web server like Apache or from the command-line)
 
 ### Executing from the command-line

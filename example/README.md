@@ -13,9 +13,10 @@ Here is the list of the sequence executed by the script:
 * Update to selected parts of the inserted data
 * Retrieval of a specific single value
 * Retrieval of a specific column
-* Retrieval of a sepcific row
+* Retrieval of a specific row
 * Retrieval of several rows
 * Retrieval of rows indexed by an _id_ field
+* Retrieval of pairs of values
 
 ## How to run this example
 

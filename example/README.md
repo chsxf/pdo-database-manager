@@ -23,7 +23,18 @@ Here is the list of the sequence executed by the script:
 
 This sample file uses a database called `test_database` as a demonstration.
 If such a database already exists on your SQL server, you may want the script to use a different one.
-Simply change the database name in the first lines of the sample file.
+
+Simply change the database name at line 5 of the sample file from ...
+
+```php
+$database_name = 'test_database';
+```
+
+... to ...
+
+```php
+$database_name = 'your_database_name';
+```
 
 ### System requirements
 

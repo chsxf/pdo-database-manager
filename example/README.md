@@ -32,7 +32,7 @@ If such a database already exists on your SQL server, you may want the script to
 
 Also, the scripts assumes your MySQL server is running locally (as `localhost`), using user `root` with password `root`.
 
-You can change the default configuration by modifying lines 5 to 8 with appropriate values for your own setup.
+You can change the default configuration by modifying lines 5 to 8 of the `example.php` file with appropriate values for your own setup.
 
 ```php
 $server_host = 'localhost';

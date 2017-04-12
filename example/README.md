@@ -9,8 +9,8 @@ The class DatabaseManager inherits from PHP's built-in [PDO class](http://php.ne
 Here is the list of the sequence executed by the script:
 * Creation of a table (dropping it first if it already exists)
 * Insertion of sample data into that table
-* Update to selected parts of the inserted data
 * Retrieval of a specific single value
+* Update to selected parts of the inserted data
 * Retrieval of a specific column
 * Retrieval of a specific row
 * Retrieval of several rows

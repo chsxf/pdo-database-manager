@@ -1,6 +1,6 @@
 # Example
 
-## About this example
+## About This Example
 
 This sample file executes a variety of queries on a database in order to demonstrate its capabilities.
 
@@ -17,37 +17,36 @@ Here is the list of the sequence executed by the script:
 * Retrieval of rows indexed by an _id_ field
 * Retrieval of pairs of values
 
-## How to run this example
+## How to Run This Example
 
-### Important notice
-
-This sample file uses a database called `test_database` as a demonstration.
-If such a database already exists on your SQL server, you may want the script to use a different one.
-
-Simply change the database name at line 5 of the sample file from ...
-
-```php
-$database_name = 'test_database';
-```
-
-... to ...
-
-```php
-$database_name = 'your_database_name';
-```
-
-### System requirements
+### System Requirements
 
 To make this example work, you will need:
 * a MySQL 5+ server with a database called `test_database`
 * PHP 5.1 or later version (through a web server like Apache or from the command-line)
 
-### Executing from the command-line
+### Script Configuration
+
+This sample file uses a database called `test_database` as a demonstration.
+If such a database already exists on your SQL server, you may want the script to use a different one.
+
+Also, the scripts assumes your MySQL server is running locally (as `localhost`), using user `root` with password `root`.
+
+You can change the default configuration by modifying lines 5 to 8 with appropriate values for your own setup.
+
+```php
+$server_host = 'localhost';
+$user = 'root';
+$password = 'root';
+$database_name = 'test_database';
+```
+
+### Executing From the Command-line
 
 * Make sure the `php` executable is in your path
 * Type the following command into your command-line interface `php -f /path/to/example.php`
 
-### Executing through a web server
+### Executing Through a Web Server
 
 * Copy the content of this repository to a sub-folder of your webserver documents root directory
 * Make sur your webserver is running

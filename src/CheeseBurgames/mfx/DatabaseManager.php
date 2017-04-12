@@ -161,8 +161,8 @@ namespace CheeseBurgames\mfx {
 		 * @param array $driver_options Optional PDO driver options
 		 * @see \PDO::prepare()
 		 */
-		public function prepare($statement, array $driver_options = array()) {
-			$stmt = parent::prepare($statement, $driver_options);
+		public function prepare($statement, $driver_options = NULL) {
+			$stmt = parent::prepare($statement, ($driver_options === NULL || !is_array($driver_options)) ? array() : $driver_options);
 			if ($stmt === false)
 				$this->_logError($statement);
 			return $stmt;
@@ -174,7 +174,7 @@ namespace CheeseBurgames\mfx {
 		 * @see \PDO::query()
 		 */
 		public function query($statement) {
-			$stmt = call_user_func_array(array(parent, 'query'), func_get_args());
+			$stmt = call_user_func_array(array(get_parent_class($this), 'query'), func_get_args());
 			if ($stmt === false)
 				$this->_logError($statement);
 			return $stmt;

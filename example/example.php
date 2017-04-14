@@ -8,9 +8,9 @@
 	$database_name = 'test_database';
 	
 	// Include database manager
-	require_once('../src/CheeseBurgames/mfx/DatabaseManager.php');
+	require_once('../src/CheeseBurgames/PDO/DatabaseManager.php');
 	$dsn = "mysql:dbname={$database_name};host={$server_host}";
-	$dbm = new \CheeseBurgames\mfx\DatabaseManager($dsn, $user, $password);
+	$dbm = new \CheeseBurgames\PDO\DatabaseManager($dsn, $user, $password);
 	
 	// Table creation (dropping it first if already existing)
 	$dbm->query("DROP TABLE IF EXISTS `test_table`");

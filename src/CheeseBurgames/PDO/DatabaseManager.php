@@ -7,7 +7,7 @@
  * @package framework
  */
 
-namespace CheeseBurgames\mfx {
+namespace CheeseBurgames\PDO {
 
 	/**
 	 * Constant for the name of the table into which errors are logged (if the feature is enabled).

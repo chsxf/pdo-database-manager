@@ -2,7 +2,7 @@
 /**
  * Database management helpers
  * 
- * @author Christophe SAUVEUR <christophe@xhaleera.com>
+ * @author Christophe SAUVEUR <christophe@cheeseburgames.com>
  * @version 1.0
  * @package framework
  */

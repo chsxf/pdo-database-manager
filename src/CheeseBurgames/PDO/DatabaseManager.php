@@ -28,11 +28,6 @@ namespace CheeseBurgames\PDO {
 	class DatabaseManager extends \PDO
 	{
 		/**
-		 * @var array Open connections container
-		 */
-		private static $openConnections = array();
-		
-		/**
 		 * @var array Errors holder used while in transaction
 		 */
 		private $_errors;

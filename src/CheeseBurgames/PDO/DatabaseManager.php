@@ -169,7 +169,7 @@ namespace CheeseBurgames\PDO {
 		 * @see \PDO::query()
 		 */
 		public function query($statement) {
-			$stmt = call_user_func_array(array(get_parent_class($this), 'query'), func_get_args());
+			$stmt = call_user_func_array(array(get_parent_class(__CLASS__), 'query'), func_get_args());
 			if ($stmt === false)
 				$this->_logError($statement);
 			return $stmt;

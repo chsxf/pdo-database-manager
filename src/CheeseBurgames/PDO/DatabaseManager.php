@@ -25,7 +25,7 @@ namespace CheeseBurgames\PDO {
 	 * Database manager class
 	 * @namespace \CheeseBurgames\mfx
 	 */
-	final class DatabaseManager extends \PDO
+	class DatabaseManager extends \PDO
 	{
 		/**
 		 * @var array Open connections container

@@ -1,0 +1,16 @@
+{
+	"name" : "cheese-burgames/pdo-database-manager",
+	"description" : "Database manager based on PDO with extension methods",
+	"homepage" : "https://github.com/cheeseburgames/pdo-database-manager",
+	"php" : "^5.4.0 || ^7.0",
+	"autoload" : {
+		"psr-4" : {
+			"" : "src/"
+		}
+	},
+	"authors" : [{
+			"name" : "Christophe SAUVEUR",
+			"email" : "christophe@cheeseburgames.com"
+		}
+	]
+}

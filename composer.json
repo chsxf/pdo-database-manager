@@ -12,5 +12,6 @@
 			"name" : "Christophe SAUVEUR",
 			"email" : "christophe@cheeseburgames.com"
 		}
-	]
+	],
+	"license" : "MIT"
 }

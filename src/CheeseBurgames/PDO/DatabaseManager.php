@@ -378,10 +378,7 @@ namespace CheeseBurgames\PDO {
 			if ($stmt->columnCount() < 2)
 				return false;
 
-			$result = array();
-			while ($row = $stmt->fetch(\PDO::FETCH_NUM))
-				$result[$row[0]] = $row[1];
-			return $result;
+			return $stmt->fetchAll(\PDO::FETCH_KEY_PAIR);
 		}
 
 		/**

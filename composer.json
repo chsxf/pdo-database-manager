@@ -1,9 +1,9 @@
 {
-	"name" : "cheese-burgames/pdo-database-manager",
+	"name" : "chsxf/pdo-database-manager",
 	"description" : "Database manager based on PDO with extension methods",
-	"homepage" : "https://github.com/cheeseburgames/pdo-database-manager",
+	"homepage" : "https://github.com/chsxf/pdo-database-manager",
 	"require" : {
-		"php" : "^5.4.0 || ^7.0"
+		"php" : "^8.0"
 	},
 	"autoload" : {
 		"psr-4" : {
@@ -12,7 +12,7 @@
 	},
 	"authors" : [{
 			"name" : "Christophe SAUVEUR",
-			"email" : "christophe@cheeseburgames.com"
+			"email" : "chsxf.pro@gmail.com"
 		}
 	],
 	"license" : "MIT"

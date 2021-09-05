@@ -23,7 +23,7 @@ Here is the list of the sequence executed by the script:
 
 To make this example work, you will need:
 * a MySQL 5+ server with a database called `test_database`
-* PHP 5.1 or later version (through a web server like Apache or from the command-line)
+* PHP 8.0 or later version (through a web server like Apache or from the command-line)
 
 ### Script Configuration
 
@@ -32,7 +32,7 @@ If such a database already exists on your SQL server, you may want the script to
 
 Also, the scripts assumes your MySQL server is running locally (as `localhost`), using user `root` with password `root`.
 
-You can change the default configuration by modifying lines 5 to 8 of the `example.php` file with appropriate values for your own setup.
+You can change the default configuration by modifying lines 9 to 12 in the `example.php` file with appropriate values for your own setup.
 
 ```php
 $server_host = 'localhost';

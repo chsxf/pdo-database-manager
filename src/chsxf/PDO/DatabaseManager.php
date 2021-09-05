@@ -46,13 +46,14 @@ namespace chsxf\PDO {
          * @param string $dsn Data Source Name (ie mysql:host=localhost;dbname=mydb)
          * @param string $username Username
          * @param string $password Password
+         * @param array $options Driver options
          * @param bool $useDatabaseErrorLogging Is set, errors will be logged in the database. False by default
          *
          * @see \PDO::__construct()
          */
-        public function __construct(string $dsn, ?string $username = null, ?string $password = null, private bool $useDatabaseErrorLogging = false)
+        public function __construct(string $dsn, ?string $username = null, ?string $password = null, ?array $options = null, private bool $useDatabaseErrorLogging = false)
         {
-            parent::__construct($dsn, $username, $password);
+            parent::__construct($dsn, $username, $password, $options);
 
             $this->_errors = array();
             $this->_loggingError = false;

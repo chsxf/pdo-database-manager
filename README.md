@@ -22,7 +22,7 @@ This repository uses [gitmoji](https://gitmoji.dev) for its commit messages.
 We strongly recommend using [Composer](https://getcomposer.org/) to install this package.
 
 ```
-composer require chsxf/pdo-databasemanager
+composer require chsxf/pdo-database-manager
 ```
 
 ## Usage

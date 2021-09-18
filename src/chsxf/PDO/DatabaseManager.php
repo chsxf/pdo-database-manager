@@ -119,7 +119,7 @@ namespace chsxf\PDO {
          */
         private function _pushError(array $error)
         {
-            $stmt = $this->prepare(sprintf("INSERT INTO `%s` VALUE (?, ?, ?, ?, ?, ?, ?)", \chsxf\PDO\ERRORS_TABLE));
+            $stmt = $this->prepare(sprintf("INSERT INTO `%s` VALUE (?, ?, ?, ?, ?, ?, ?)", ERRORS_TABLE));
             if ($stmt !== false) {
                 $stmt->execute($error);
             }

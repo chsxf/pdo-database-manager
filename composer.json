@@ -3,7 +3,7 @@
 	"description" : "Database manager based on PDO with extension methods",
 	"homepage" : "https://github.com/chsxf/pdo-database-manager",
 	"require" : {
-		"php" : "^8.0"
+		"php" : "^8.0.7"
 	},
 	"autoload" : {
 		"psr-4" : {

@@ -41,6 +41,8 @@ namespace chsxf\PDO {
          */
         private bool $_loggingError;
 
+        private static $_validReturnTypes = array(\PDO::FETCH_OBJ, \PDO::FETCH_ASSOC, \PDO::FETCH_NUM, \PDO::FETCH_BOTH);
+
         /**
          * Constructor
          * @param string $dsn Data Source Name (ie mysql:host=localhost;dbname=mydb)
@@ -60,13 +62,30 @@ namespace chsxf\PDO {
         }
 
         /**
+         * (non-PHPdoc)
+         * @see \PDO::setAttribute()
+         */
+        public function setAttribute(int $attribute, mixed $value): bool
+        {
+            if ($attribute != \PDO::ATTR_DEFAULT_FETCH_MODE) {
+                return parent::setAttribute($attribute, $value);
+            } else {
+                $validReturnType = $this->_validateReturnType($value);
+                if ($validReturnType === \PDO::FETCH_DEFAULT) {
+                    return false;
+                }
+                return parent::setAttribute($attribute, $validReturnType);
+            }
+        }
+
+        /**
          * Validates the return type for query results
          * @param int $return_type Return type
-         * @return int the specified return type, or \PDO::FETCH_OBJ if invalid
+         * @return int the specified return type, or \PDO::FETCH_DEFAULT if invalid
          */
         private function _validateReturnType(int $return_type): int
         {
-            return in_array($return_type, array(\PDO::FETCH_OBJ, \PDO::FETCH_ASSOC, \PDO::FETCH_NUM)) ? $return_type : \PDO::FETCH_OBJ;
+            return in_array($return_type, self::$_validReturnTypes) ? $return_type : \PDO::FETCH_DEFAULT;
         }
 
         /**
@@ -239,7 +258,7 @@ namespace chsxf\PDO {
          * @param string $return_type Specifies if the function should return rows as objects, associative or numeric arrays. (Defaults to the default configuration).
          * @return array|false an array containing all rows returned by the statement or false in case of an error.
          */
-        public function get(string $statement, int $return_type = \PDO::FETCH_OBJ, mixed ...$arguments): array|false
+        public function get(string $statement, int $return_type = \PDO::FETCH_DEFAULT, mixed ...$arguments): array|false
         {
             $stmt = $this->prepare($statement);
             if ($stmt === false) {
@@ -301,7 +320,7 @@ namespace chsxf\PDO {
          * @param string $return_type Specifies if the function should return the row as an object, an associative or a numeric array. (Defaults to the default configuration).
          * @return array|false an array containing the row returned by the statement or false in case of an error.
          */
-        public function getRow(string $statement, int $return_type = \PDO::FETCH_OBJ, mixed ...$arguments): array|false
+        public function getRow(string $statement, int $return_type = \PDO::FETCH_DEFAULT, mixed ...$arguments): array|false
         {
             $stmt = $this->prepare($statement);
             if ($stmt === false) {
@@ -403,7 +422,7 @@ namespace chsxf\PDO {
          * @param int $return_type Specifies if the function should return rows as objects, associative or numeric arrays. (Defaults to the default configuration).
          * @return array|false an array containing all rows returned by the statement or false if the key field does not exists or in case of an error.
          */
-        public function getIndexed(string $statement, string $keyField, int $return_type = \PDO::FETCH_OBJ, mixed ...$arguments): array|false
+        public function getIndexed(string $statement, string $keyField, int $return_type = \PDO::FETCH_DEFAULT, mixed ...$arguments): array|false
         {
             $stmt = $this->prepare($statement);
             if ($stmt === false) {
@@ -438,13 +457,23 @@ namespace chsxf\PDO {
 
             // Retrieving data
             $rt = $this->_validateReturnType($return_type);
+            if ($rt === \PDO::FETCH_DEFAULT) {
+                $defaultReturnType = $this->getAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE);
+                $rt = $this->_validateReturnType($defaultReturnType);
+                // Fails if still not a valid return type
+                if ($rt === \PDO::FETCH_DEFAULT) {
+                    return false;
+                }
+            }
             $results = array();
             while ($row = $stmt->fetch($rt)) {
+                unset($altKey);
                 switch ($rt) {
                     case \PDO::FETCH_OBJ:
                         $key = $row->$keyField;
                         break;
-
+                        
+                    case \PDO::FETCH_BOTH:
                     case \PDO::FETCH_ASSOC:
                         $key = $row[$keyField];
                         break;

@@ -15,7 +15,7 @@ This repository uses [gitmoji](https://gitmoji.dev) for its commit messages.
 
 ## Requirements
 
-* PHP 8+
+* PHP 8.0.7+
 
 ## Installation
 
@@ -133,7 +133,7 @@ Product labels:
 The `getRow` method fetches the first row returned by the provided statement.
 
 Along with the `get` and `getIndexed` methods, you can specify how rows are fetched.
-At the moment, only `PDO::FETCH_ASSOC`, `PDO::FETCH_NUM` and `PDO::FETCH_OBJ` (default) are supported.
+At the moment, only `PDO::FETCH_ASSOC`, `PDO::FETCH_NUM`, `PDO::FETCH_OBJ` and `PDO::FETCH_BOTH` (PHP's default) are supported.
 
 ```php
 $productData = $dbm->getRow('SELECT * FROM `test_table` WHERE `id` = ?', \PDO::FETCH_ASSOC, $productID);

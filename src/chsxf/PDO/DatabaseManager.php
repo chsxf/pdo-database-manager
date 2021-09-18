@@ -32,6 +32,16 @@ namespace chsxf\PDO {
     class DatabaseManager extends \PDO
     {
         /**
+         * @var array Accepted values for the return type of rows
+         */
+        private static $_validReturnTypes = array(\PDO::FETCH_OBJ, \PDO::FETCH_ASSOC, \PDO::FETCH_NUM, \PDO::FETCH_BOTH);
+
+        /**
+         * @var bool If set, errors will be logged in the database
+         */
+        private bool $_useDatabaseErrorLogging;
+
+        /**
          * @var array Errors holder used while in transaction
          */
         private array $_errors;
@@ -40,8 +50,6 @@ namespace chsxf\PDO {
          * @var bool Flag indicating if the instance is inside the error logging procedure.
          */
         private bool $_loggingError;
-
-        private static $_validReturnTypes = array(\PDO::FETCH_OBJ, \PDO::FETCH_ASSOC, \PDO::FETCH_NUM, \PDO::FETCH_BOTH);
 
         /**
          * Constructor
@@ -53,10 +61,11 @@ namespace chsxf\PDO {
          *
          * @see \PDO::__construct()
          */
-        public function __construct(string $dsn, ?string $username = null, ?string $password = null, ?array $options = null, private bool $useDatabaseErrorLogging = false)
+        public function __construct(string $dsn, ?string $username = null, ?string $password = null, ?array $options = null, bool $useDatabaseErrorLogging = false)
         {
             parent::__construct($dsn, $username, $password, $options);
 
+            $this->_useDatabaseErrorLogging = $useDatabaseErrorLogging;
             $this->_errors = array();
             $this->_loggingError = false;
         }

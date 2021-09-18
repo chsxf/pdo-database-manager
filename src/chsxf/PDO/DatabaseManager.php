@@ -3,15 +3,13 @@
  * Database management helpers
  *
  * @author Christophe SAUVEUR <chsxf.pro@gmail.com>
- * @version 1.1
- * @package framework
  */
 
 namespace chsxf\PDO {
 
     /**
      * Constant for the name of the table into which errors are logged (if the feature is enabled).
-     * Can be overridden if defined before including of this file.
+     * Can be overridden if defined before the inclusion of this file.
      */
     if (!defined('chsxf\PDO\ERRORS_TABLE')) {
         define('chsxf\PDO\ERRORS_TABLE', 'database_errors');
@@ -187,14 +185,27 @@ namespace chsxf\PDO {
         }
 
         /**
+         * Filter arguments so if the first argument is an array, then it is used instead
+         * @var array $arguments List of arguments to filter
+         * @return array The filtered arguments list
+         */
+        private static function _filterArguments(array $arguments): array
+        {
+            if (isset($arguments[0]) && is_array($arguments[0])) {
+                return $arguments[0];
+            }
+            return $arguments;
+        }
+
+        /**
          * (non-PHPdoc)
          * @param string $statement SQL statement
          * @param array $driver_options Optional PDO driver options
          * @see \PDO::prepare()
          */
-        public function prepare($statement, $driver_options = null): \PDOStatement|false
+        public function prepare($statement, array $driver_options = []): \PDOStatement|false
         {
-            $stmt = parent::prepare($statement, ($driver_options === null || !is_array($driver_options)) ? array() : $driver_options);
+            $stmt = parent::prepare($statement, $driver_options);
             if ($stmt === false) {
                 $this->_logError($statement);
             }
@@ -232,16 +243,12 @@ namespace chsxf\PDO {
         {
             // Using prepared statement
             if (!empty($arguments)) {
-                $args = $arguments;
-                if (isset($args[0]) && is_array($args[0])) {
-                    $args = $args[0];
-                }
-
                 $stmt = $this->prepare($statement);
                 if ($stmt == false) {
                     return false;
                 }
-
+                
+                $args = self::_filterArguments($arguments);
                 if ($stmt->execute($args) === false) {
                     $this->_logError($statement, $stmt);
                     return false;
@@ -274,13 +281,8 @@ namespace chsxf\PDO {
                 return false;
             }
 
-            // Arguments
-            $args = $arguments;
-            if (isset($args[0]) && is_array($args[0])) {
-                $args = $args[0];
-            }
-            
             // Executing the query
+            $args = self::_filterArguments($arguments);
             if ($stmt->execute($args) === false) {
                 $this->_logError($statement, $stmt);
                 return false;
@@ -305,13 +307,8 @@ namespace chsxf\PDO {
                 return false;
             }
 
-            // Arguments
-            $args = $arguments;
-            if (isset($args[0]) && is_array($args[0])) {
-                $args = $args[0];
-            }
-
             // Executing the query
+            $args = self::_filterArguments($arguments);
             if ($stmt->execute($args) === false) {
                 $this->_logError($statement, $stmt);
                 return false;
@@ -336,13 +333,8 @@ namespace chsxf\PDO {
                 return false;
             }
 
-            // Arguments
-            $args = $arguments;
-            if (isset($args[0]) && is_array($args[0])) {
-                $args = $args[0];
-            }
-
             // Executing the query
+            $args = self::_filterArguments($arguments);
             if ($stmt->execute($args) === false) {
                 $this->_logError($statement, $stmt);
                 return false;
@@ -369,13 +361,8 @@ namespace chsxf\PDO {
                 return false;
             }
 
-            // Arguments
-            $args = $arguments;
-            if (isset($args[0]) && is_array($args[0])) {
-                $args = $args[0];
-            }
-
             // Executing the query
+            $args = self::_filterArguments($arguments);
             if ($stmt->execute($args) === false) {
                 $this->_logError($statement, $stmt);
                 return false;
@@ -403,13 +390,8 @@ namespace chsxf\PDO {
                 return false;
             }
 
-            // Arguments
-            $args = $arguments;
-            if (isset($args[0]) && is_array($args[0])) {
-                $args = $args[0];
-            }
-
             // Executing the query
+            $args = self::_filterArguments($arguments);
             if ($stmt->execute($args) === false) {
                 $this->_logError($statement, $stmt);
                 return false;
@@ -438,13 +420,8 @@ namespace chsxf\PDO {
                 return false;
             }
 
-            // Arguments
-            $args = $arguments;
-            if (isset($args[0]) && is_array($args[0])) {
-                $args = $args[0];
-            }
-
             // Executing the query
+            $args = self::_filterArguments($arguments);
             if ($stmt->execute($args) === false) {
                 $this->_logError($statement, $stmt);
                 return false;

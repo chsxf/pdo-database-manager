@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Database management helpers
  *
@@ -218,9 +219,9 @@ namespace chsxf\PDO {
          * @param string $statement SQL statement
          * @see \PDO::query()
          */
-        public function query($statement, ?int $fetchMode = null, mixed ...$arguments): \PDOStatement|false
+        public function query($statement, $fetchMode = null, ...$arguments): \PDOStatement|false
         {
-            $stmt = parent::query($statement, $fetchMode, $arguments);
+            $stmt = parent::query($statement, $fetchMode, ...$arguments);
             if ($stmt === false) {
                 $this->_logError($statement);
             }
@@ -248,7 +249,7 @@ namespace chsxf\PDO {
                 if ($stmt == false) {
                     return false;
                 }
-                
+
                 $args = self::_filterArguments($arguments);
                 if ($stmt->execute($args) === false) {
                     $this->_logError($statement, $stmt);
@@ -459,7 +460,7 @@ namespace chsxf\PDO {
                     case \PDO::FETCH_OBJ:
                         $key = $row->$keyField;
                         break;
-                        
+
                     case \PDO::FETCH_BOTH:
                     case \PDO::FETCH_ASSOC:
                         $key = $row[$keyField];

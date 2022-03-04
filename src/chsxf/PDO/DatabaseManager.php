@@ -326,9 +326,9 @@ namespace chsxf\PDO {
          *
          * @param string $statement SQL statement
          * @param string $return_type Specifies if the function should return the row as an object, an associative or a numeric array. (Defaults to the default configuration).
-         * @return array|false an array containing the row returned by the statement or false in case of an error.
+         * @return array|object|false an array or an object containing the row returned by the statement or false in case of an error.
          */
-        public function getRow(string $statement, int $return_type = \PDO::FETCH_DEFAULT, mixed ...$arguments): array|false
+        public function getRow(string $statement, int $return_type = \PDO::FETCH_DEFAULT, mixed ...$arguments): array|object|false
         {
             $stmt = $this->prepare($statement);
             if ($stmt === false) {

@@ -65,6 +65,8 @@ namespace chsxf\PDO {
         {
             parent::__construct($dsn, $username, $password, $options);
 
+            $this->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_SILENT);
+
             $this->_useDatabaseErrorLogging = $useDatabaseErrorLogging;
             $this->_errors = array();
             $this->_loggingError = false;

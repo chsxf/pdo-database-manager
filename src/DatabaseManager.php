@@ -4,7 +4,7 @@
  * Database management helpers
  *
  * @author Christophe SAUVEUR <chsxf.pro@gmail.com>
- * @version 2.0.3
+ * @version 2.0.4
  */
 
 namespace chsxf\PDO;

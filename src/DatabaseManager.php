@@ -18,11 +18,6 @@ if (!defined('chsxf\PDO\ERRORS_TABLE')) {
 }
 
 /**
- * Exceptions thrown by the DatabaseManager class
- */
-class DatabaseManagerException extends \PDOException {}
-
-/**
  * Database manager class
  */
 class DatabaseManager extends \PDO

@@ -98,7 +98,7 @@ class DatabaseManager extends \PDO
      * @param string $query The SQL query that generated the error.
      * @param \PDOStatement $statement If provided, error info is gathered from this statement handle. (Defaults to NULL)
      */
-    private function _logError(string $query, \PDOStatement $statement = null)
+    private function _logError(string $query, ?\PDOStatement $statement = null)
     {
         if (!$this->_useDatabaseErrorLogging || $this->_loggingError) {
             return;

@@ -7,11 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.0.3] - 2025-02-22
+## [2.0.5] - 2025-02-22
 
 ### Fixed
 
 - Addressed PHP 8.4 deprecations
+
+## [2.0.4] - 2024-09-30
+
+### Fixed
+
+- Issue preventing autoloading of the `DatabaseManagerException` class
+
+## [2.0.3] - 2024-09-30
+
+### Changed
+
+- Reorganized folder structure to better support PSR-4
 
 ## [2.0.2] - 2023-08-05
 
